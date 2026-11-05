@@ -1,0 +1,16 @@
+{
+  "name": "slopshop",
+  "interface": { "displayName": "Slopshop" },
+  "plugins": [
+    {
+      "name": "firefox",
+      "source": { "source": "local", "path": "./plugins/firefox" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" }
+    },
+    {
+      "name": "kaiten",
+      "source": { "source": "local", "path": "./plugins/kaiten" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" }
+    }
+  ]
+}

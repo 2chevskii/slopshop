@@ -1,0 +1,17 @@
+{
+  "name": "@2chevskii/slopshop",
+  "private": true,
+  "scripts": {
+    "lint": "npm run lint:json && npm run lint:markdown",
+    "lint:json": "prettier --check \"**/*.json\" \".agents/**/*.json\"",
+    "lint:markdown": "markdownlint-cli2 \"**/*.md\""
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "0.24.0",
+    "prettier": "3.9.10"
+  },
+  "overrides": {
+    "re2js": "^2.9.1",
+    "katex": "^0.18.2"
+  }
+}
