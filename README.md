@@ -62,6 +62,8 @@ npm run validate -- --verbose
 npm run slopshop -- --help
 ```
 
+On color-capable terminals, `check` and `generate` highlight additions in green, removals in red, and updates in yellow. JSON diffs also highlight paths and value types. Set `NO_COLOR=1` to disable colors.
+
 When a plugin is removed from `slopshop.hcl`, the previous marketplace index identifies its generated `plugin.json` and `mcp.json` for cleanup. `check` reports the removals, and `generate` applies them.
 
 ## Manifest reference

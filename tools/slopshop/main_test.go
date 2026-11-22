@@ -122,14 +122,44 @@ func TestRemovedPluginOutputs(t *testing.T) {
 }
 
 func TestJSONDifferences(t *testing.T) {
-	diff := strings.Join(jsonDifferences([]byte(`{"version":"1","removed":true}`), []byte(`{"version":"2","added":1}`)), "\n")
+	t.Setenv("NO_COLOR", "1")
+	report := newReporter(&bytes.Buffer{}, false)
+	diff := strings.Join(report.jsonDifferences([]byte(`{"version":"1","removed":true}`), []byte(`{"version":"2","added":1}`)), "\n")
 	for _, part := range []string{`+ $.added = 1`, `- $.removed = true`, `~ $.version: "1" -> "2"`} {
 		if !strings.Contains(diff, part) {
 			t.Errorf("missing %q in %s", part, diff)
 		}
 	}
-	if diff := jsonDifferences([]byte("{\"a\":1}"), []byte("{ \"a\": 1 }")); len(diff) != 1 || !strings.Contains(diff[0], "formatting") {
+	if diff := report.jsonDifferences([]byte("{\"a\":1}"), []byte("{ \"a\": 1 }")); len(diff) != 1 || !strings.Contains(diff[0], "formatting") {
 		t.Fatalf("formatting: %v", diff)
+	}
+}
+
+func TestCheckHighlightsChanges(t *testing.T) {
+	t.Setenv("CLICOLOR_FORCE", "1")
+	t.Setenv("NO_COLOR", "")
+	root := fixture(t)
+	mustRun(t, root, "generate")
+	put(t, root, "plugins/firefox/plugin.json", `{"version":"0.0.1","obsolete":true}`)
+	output, err := executeCommand(root, "check")
+	if err == nil {
+		t.Fatal("check accepted stale output")
+	}
+	for _, styled := range []string{
+		"\x1b[1;32m+", "\x1b[1;31m-", "\x1b[1;33m~",
+		"\x1b[1;33mUPDATE", "\x1b[36m$.version", "\x1b[32m\"0.1.0\"", "\x1b[35mtrue",
+	} {
+		if !strings.Contains(output, styled) {
+			t.Errorf("missing %q in %q", styled, output)
+		}
+	}
+
+	report := newReporter(&bytes.Buffer{}, false)
+	nested := report.jsonValue([]any{map[string]any{"key": "a\"b"}, 12.5, nil})
+	for _, styled := range []string{"\x1b[34m\"key\"", "\x1b[32m\"a\\\"b\"", "\x1b[33m12.5", "\x1b[35mnull"} {
+		if !strings.Contains(nested, styled) {
+			t.Errorf("missing %q in %q", styled, nested)
+		}
 	}
 }
 

@@ -176,9 +176,9 @@ func planOutputs(root string, manifest *manifest, outputs map[string]any, report
 		}
 		reason := outputReason(name)
 		if os.IsNotExist(err) {
-			report.change("CREATE", name, reason, jsonDifferences([]byte("{}"), expected))
+			report.change("CREATE", name, reason, report.jsonDifferences([]byte("{}"), expected))
 		} else {
-			report.change("UPDATE", name, reason, jsonDifferences(actual, expected))
+			report.change("UPDATE", name, reason, report.jsonDifferences(actual, expected))
 		}
 		changes = append(changes, outputChange{name: name, content: expected})
 	}

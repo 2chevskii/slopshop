@@ -9,9 +9,6 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
-	"unicode/utf8"
-
-	"github.com/pmezard/go-difflib/difflib"
 )
 
 type stagedImport struct {
@@ -195,7 +192,7 @@ func reportImports(root string, staged []stagedImport, old lockFile, report *rep
 			parts := strings.Split(key, "/")
 			var details []string
 			if was && now {
-				details = fileDifferences(before, after)
+				details = report.textDifferences(before, after)
 			}
 			report.change(action, filepath.Join("plugins", parts[0], "skills", parts[1], name), reason, details)
 		}
@@ -220,7 +217,7 @@ func reportImports(root string, staged []stagedImport, old lockFile, report *rep
 		if missing {
 			report.change("CREATE", "slopshop.lock.json", "Record skill source paths, content hashes and resolved commits.", nil)
 		} else {
-			report.change("UPDATE", "slopshop.lock.json", "Record skill source paths, content hashes and resolved commits.", jsonDifferences(before, after))
+			report.change("UPDATE", "slopshop.lock.json", "Record skill source paths, content hashes and resolved commits.", report.jsonDifferences(before, after))
 		}
 	}
 	return nil
@@ -235,20 +232,6 @@ func skillChangeReason(entry importEntry) string {
 		ref = "HEAD"
 	}
 	return fmt.Sprintf("Copied from %s at %s (ref %s, commit %s).", entry.Source, entry.Path, ref, entry.Commit)
-}
-
-func fileDifferences(before, after []byte) []string {
-	if !utf8.Valid(before) || !utf8.Valid(after) || bytes.IndexByte(before, 0) >= 0 || bytes.IndexByte(after, 0) >= 0 {
-		return []string{"Binary content changed."}
-	}
-	diff, err := difflib.GetUnifiedDiffString(difflib.UnifiedDiff{
-		A: difflib.SplitLines(string(before)), B: difflib.SplitLines(string(after)),
-		FromFile: "previous", ToFile: "updated", Context: 3,
-	})
-	if err != nil || diff == "" {
-		return []string{"File content changed."}
-	}
-	return strings.Split(strings.TrimRight(diff, "\n"), "\n")
 }
 
 func skillFiles(dir string) (map[string][]byte, error) {
