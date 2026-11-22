@@ -1,3 +1,8 @@
 {
-  "skills": {}
+  "skills": {
+    "obsidian/obsidian-mcp-setup": {
+      "path": "obsidian-mcp-setup",
+      "sha256": "789998f26d7d54ab6dc27230c8296805c9255bbb925748d6475769ae519bd7fb"
+    }
+  }
 }

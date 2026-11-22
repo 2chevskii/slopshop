@@ -4,10 +4,11 @@ A small marketplace of plugins and skills for AI agents.
 
 ## Plugins
 
-| Plugin  | MCP server                                            | Skill          |
-| ------- | ----------------------------------------------------- | -------------- |
-| Firefox | [FoxMCP](https://github.com/2chevskii/foxmcp)         | `foxmcp-usage` |
-| Kaiten  | [Kaiten MCP](https://github.com/2chevskii/kaiten-mcp) | `kaiten-usage` |
+| Plugin   | MCP server                                            | Skill                |
+| -------- | ----------------------------------------------------- | -------------------- |
+| Firefox  | [FoxMCP](https://github.com/2chevskii/foxmcp)         | `foxmcp-usage`       |
+| Kaiten   | [Kaiten MCP](https://github.com/2chevskii/kaiten-mcp) | `kaiten-usage`       |
+| Obsidian | Set up in your MCP client                             | `obsidian-mcp-setup` |
 
 ## Try locally
 
@@ -18,6 +19,7 @@ codex plugin marketplace add .
 codex plugin list
 codex plugin add firefox@slopshop
 codex plugin add kaiten@slopshop
+codex plugin add obsidian@slopshop
 ```
 
 Install the desired plugin using the plugin directory in ChatGPT desktop or the Codex CLI. The marketplace and plugin installation do not complete the external server setup below. See the [OpenAI plugin documentation](https://developers.openai.com/plugins/build/plugins) for the available client workflows. After publishing the repository, `codex plugin marketplace add 2chevskii/slopshop` can be used instead.
@@ -29,6 +31,10 @@ Install the Firefox extension and start FoxMCP as described in its [quick start]
 ### Kaiten
 
 Kaiten MCP needs Node.js 24+, a Kaiten company origin and API token. The plugin starts `npx --yes @2chevskii/kaiten-mcp@latest` over stdio. Set `KAITEN_ORIGIN` and `KAITEN_TOKEN` securely in the environment inherited by the client before starting it, or configure the server separately using the [upstream setup guide](https://2chevskii.github.io/kaiten-mcp/guide). Do not commit tokens. If the client does not pass those variables to the plugin process, use its supported secret configuration or configure Kaiten MCP separately.
+
+### Obsidian
+
+After installing `obsidian@slopshop`, ask the agent to set up Obsidian MCP using `obsidian-mcp-setup`. The skill guides you through enabling Obsidian’s Local REST API with MCP community plugin, supplying its API key on your machine, and verifying the connection from your MCP client. [Obsidian MCP setup](https://github.com/coddingtonbear/obsidian-local-rest-api#mcp-clients)
 
 ## Install skills separately
 

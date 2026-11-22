@@ -14,11 +14,11 @@ plugin "firefox" {
 }
 
 plugin "obsidian" {
-  version = "1.0.0"
+  version     = "2.0.0"
+  description = "Integrate coding agents with Obsidian vaults"
 
-  mcp_server "obsidian" {
-    type = "http"
-    url = "https://127.0.0.1:27124/mcp/"
+  skill "obsidian-mcp-setup" {
+    path = "obsidian-mcp-setup"
   }
 }
 
