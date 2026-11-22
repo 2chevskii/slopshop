@@ -13,6 +13,15 @@ plugin "firefox" {
   }
 }
 
+plugin "obsidian" {
+  version = "1.0.0"
+
+  mcp_server "obsidian" {
+    type = "http"
+    url = "http://127.0.0.1:27123/mcp/"
+  }
+}
+
 # plugin "kaiten" {
 #   version     = "1.0.0"
 #   description = "Work with Kaiten cards using Kaiten MCP and a workflow skill."
