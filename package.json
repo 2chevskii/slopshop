@@ -2,6 +2,10 @@
   "name": "@2chevskii/slopshop",
   "private": true,
   "scripts": {
+    "slopshop": "go run ./tools/slopshop",
+    "generate": "go run ./tools/slopshop generate",
+    "check": "go run ./tools/slopshop check",
+    "validate": "go run ./tools/slopshop validate",
     "lint": "npm run lint:json && npm run lint:markdown",
     "lint:json": "prettier --check \"**/*.json\" \".agents/**/*.json\"",
     "lint:markdown": "markdownlint-cli2 \"**/*.md\""

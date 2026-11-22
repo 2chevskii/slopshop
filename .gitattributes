@@ -1,0 +1,10 @@
+# Generated files are compared byte-for-byte by the generator.
+/.agents/plugins/marketplace.json text eol=lf
+/plugins/*/plugin.json text eol=lf
+/plugins/*/mcp.json text eol=lf
+/skills.sh.json text eol=lf
+/slopshop.lock.json text eol=lf
+
+# Preserve source and generated skill bytes across platforms for lock verification.
+/skills-source/** -text
+/plugins/*/skills/** -text

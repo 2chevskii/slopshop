@@ -2,9 +2,12 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "kaiten": {
-      "type": "stdio",
+      "args": [
+        "--yes",
+        "@2chevskii/kaiten-mcp@latest"
+      ],
       "command": "npx",
-      "args": ["--yes", "@2chevskii/kaiten-mcp@latest"]
+      "type": "stdio"
     }
   }
 }

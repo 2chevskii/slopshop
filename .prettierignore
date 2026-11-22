@@ -1,0 +1,5 @@
+.agents/plugins/marketplace.json
+plugins/*/plugin.json
+plugins/*/mcp.json
+skills.sh.json
+slopshop.lock.json

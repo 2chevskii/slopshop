@@ -1,4 +1,7 @@
 {
   "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
-  "paths": ["./plugins/firefox/skills", "./plugins/kaiten/skills"]
+  "paths": [
+    "./plugins/firefox/skills",
+    "./plugins/kaiten/skills"
+  ]
 }
