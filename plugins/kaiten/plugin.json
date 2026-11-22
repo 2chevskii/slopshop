@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "description": "Set up and troubleshoot Kaiten MCP",
+  "name": "kaiten",
+  "version": "1.0.0"
+}

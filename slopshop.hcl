@@ -22,17 +22,11 @@ plugin "obsidian" {
   }
 }
 
-# plugin "kaiten" {
-#   version     = "1.0.0"
-#   description = "Work with Kaiten cards using Kaiten MCP and a workflow skill."
+plugin "kaiten" {
+  version     = "1.0.0"
+  description = "Set up and troubleshoot Kaiten MCP"
 
-#   mcp_server "kaiten" {
-#     type    = "stdio"
-#     command = "npx"
-#     args    = ["--yes", "@2chevskii/kaiten-mcp@latest"]
-#   }
-
-#   skill "kaiten-usage" {
-#     path = "kaiten-usage"
-#   }
-# }
+  skill "kaiten-mcp-setup" {
+    path = "kaiten-mcp-setup"
+  }
+}

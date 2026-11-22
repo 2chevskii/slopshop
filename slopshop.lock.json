@@ -1,5 +1,9 @@
 {
   "skills": {
+    "kaiten/kaiten-mcp-setup": {
+      "path": "kaiten-mcp-setup",
+      "sha256": "afd8a0611c00bf14add5bc7523c2a994a52eda50ddb954bdee72ea566fb6bda5"
+    },
     "obsidian/obsidian-mcp-setup": {
       "path": "obsidian-mcp-setup",
       "sha256": "789998f26d7d54ab6dc27230c8296805c9255bbb925748d6475769ae519bd7fb"

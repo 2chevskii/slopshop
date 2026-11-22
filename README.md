@@ -6,8 +6,8 @@ A small marketplace of plugins and skills for AI agents.
 
 | Plugin   | MCP server                                            | Skill                |
 | -------- | ----------------------------------------------------- | -------------------- |
-| Firefox  | [FoxMCP](https://github.com/2chevskii/foxmcp)         | `foxmcp-usage`       |
-| Kaiten   | [Kaiten MCP](https://github.com/2chevskii/kaiten-mcp) | `kaiten-usage`       |
+| Firefox  | [FoxMCP](https://github.com/2chevskii/foxmcp)         | —                    |
+| Kaiten   | Set up in your MCP client                             | `kaiten-mcp-setup`   |
 | Obsidian | Set up in your MCP client                             | `obsidian-mcp-setup` |
 
 ## Try locally
@@ -30,7 +30,7 @@ Install the Firefox extension and start FoxMCP as described in its [quick start]
 
 ### Kaiten
 
-Kaiten MCP needs Node.js 24+, a Kaiten company origin and API token. The plugin starts `npx --yes @2chevskii/kaiten-mcp@latest` over stdio. Set `KAITEN_ORIGIN` and `KAITEN_TOKEN` securely in the environment inherited by the client before starting it, or configure the server separately using the [upstream setup guide](https://2chevskii.github.io/kaiten-mcp/guide). Do not commit tokens. If the client does not pass those variables to the plugin process, use its supported secret configuration or configure Kaiten MCP separately.
+After installing `kaiten@slopshop`, ask the agent to set up Kaiten MCP using `kaiten-mcp-setup`. The skill checks for Node.js 24 or newer, guides you through configuring your company origin and API token in your MCP client, and verifies the connection. [Kaiten MCP setup](https://2chevskii.github.io/kaiten-mcp/guide)
 
 ### Obsidian
 
@@ -40,7 +40,7 @@ After installing `obsidian@slopshop`, ask the agent to set up Obsidian MCP using
 
 ```sh
 npx skills add . --list
-npx skills add . --skill foxmcp-usage -a codex
+npx skills add . --skill kaiten-mcp-setup -a codex
 ```
 
 After publication, replace `.` with `2chevskii/slopshop`. Installing a skill separately does not install or configure its MCP server; follow the corresponding upstream setup guide.
@@ -104,15 +104,11 @@ marketplace {
 ```hcl
 plugin "firefox" {
   version     = "0.1.0"
-  description = "Control Firefox with FoxMCP and a browser workflow skill."
+  description = "Control Firefox with FoxMCP."
 
   mcp_server "foxmcp" {
     type = "http"
     url  = "http://localhost:3000/mcp/"
-  }
-
-  skill "foxmcp-usage" {
-    path = "foxmcp-usage"
   }
 }
 ```
@@ -168,8 +164,8 @@ Validation reads only `slopshop.hcl`. Use `npm run check` to verify skill source
 Place local skill sources under `skills-source/`. Name the main file `_SKILL.md` and declare the skill directory path relative to `skills-source/`:
 
 ```hcl
-skill "foxmcp-usage" {
-  path = "foxmcp-usage"
+skill "kaiten-mcp-setup" {
+  path = "kaiten-mcp-setup"
 }
 ```
 

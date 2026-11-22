@@ -16,6 +16,17 @@
       }
     },
     {
+      "name": "kaiten",
+      "policy": {
+        "authentication": "ON_INSTALL",
+        "installation": "AVAILABLE"
+      },
+      "source": {
+        "path": "./plugins/kaiten",
+        "source": "local"
+      }
+    },
+    {
       "name": "obsidian",
       "policy": {
         "authentication": "ON_INSTALL",

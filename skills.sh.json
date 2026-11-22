@@ -1,6 +1,7 @@
 {
   "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
   "paths": [
+    "./plugins/kaiten/skills",
     "./plugins/obsidian/skills"
   ]
 }
