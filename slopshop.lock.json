@@ -1,12 +1,3 @@
 {
-  "skills": {
-    "firefox/foxmcp-usage": {
-      "path": "foxmcp-usage",
-      "sha256": "a4d8004c1948f7c15f107c912eee002d39ff3783923b684bd19ebf5e7a5d4a7a"
-    },
-    "kaiten/kaiten-usage": {
-      "path": "kaiten-usage",
-      "sha256": "444a837cd8ecd68ee9171063b964687c75125397ba7a4dfff315a773211e0f97"
-    }
-  }
+  "skills": {}
 }

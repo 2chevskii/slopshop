@@ -1,6 +1,5 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "description": "Control Firefox with FoxMCP and a browser workflow skill.",
   "name": "firefox",
-  "version": "0.1.0"
+  "version": "1.0.0"
 }

@@ -2,8 +2,15 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "foxmcp": {
-      "type": "streamable-http",
-      "url": "http://localhost:3000/mcp/"
+      "args": [
+        "--from",
+        "foxmcp==1.7.0",
+        "foxmcp",
+        "--stdio",
+        "--single-instance"
+      ],
+      "command": "uvx",
+      "type": "stdio"
     }
   }
 }
