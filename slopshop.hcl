@@ -18,7 +18,7 @@ plugin "firefox" {
 }
 
 plugin "kaiten" {
-  version     = "0.1.0"
+  version     = "1.0.0"
   description = "Work with Kaiten cards using Kaiten MCP and a workflow skill."
 
   mcp_server "kaiten" {
