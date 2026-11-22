@@ -18,7 +18,7 @@ plugin "obsidian" {
 
   mcp_server "obsidian" {
     type = "http"
-    url = "http://127.0.0.1:27123/mcp/"
+    url = "https://127.0.0.1:27124/mcp/"
   }
 }
 
